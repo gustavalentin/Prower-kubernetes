@@ -203,10 +203,10 @@ spec:
               protocol: TCP
           volumeMounts:
             - mountPath: /data
-              name: valkey-cm0
+              name: valkey-data
       hostname: valkey
       restartPolicy: Always
       volumes:
-        - configMap:
-            name: valkey-cm0
-          name: valkey-cm0
+        - name: valkey-data
+          persistentVolumeClaim:
+            claimName: valkey-pvc
