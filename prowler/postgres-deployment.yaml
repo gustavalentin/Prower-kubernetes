@@ -203,10 +203,10 @@ spec:
               protocol: TCP
           volumeMounts:
             - mountPath: /var/lib/postgresql/data
-              name: postgres-cm0
+              name: postgres-data
       hostname: postgres-db
       restartPolicy: Always
       volumes:
-        - configMap:
-            name: postgres-cm0
-          name: postgres-cm0
+        - name: postgres-data
+          persistentVolumeClaim:
+            claimName: postgres-pvc
